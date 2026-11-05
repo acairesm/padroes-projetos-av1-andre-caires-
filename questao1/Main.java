@@ -35,6 +35,12 @@ public class Main {
         System.out.println("Mouse: 20 -> 1 (somente Auditoria acompanha o Mouse)");
         mouse.alterarQuantidade(1);
 
+        Produto monitor = new Produto("Monitor", 0);
+        monitor.adicionarArea(vendas);
+
+        System.out.println("Monitor: 0 -> 4 (cadastrado zerado, Vendas alerta)");
+        monitor.alterarQuantidade(4);
+
         auditoria.imprimirRegistros();
     }
 }

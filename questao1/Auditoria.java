@@ -7,7 +7,7 @@ public class Auditoria implements AreaInteressada {
     private final List<String> registros = new ArrayList<>();
 
     @Override
-    public void atualizar(String nomeProduto, int novaQuantidade) {
+    public void atualizar(String nomeProduto, int quantidadeAnterior, int novaQuantidade) {
         registros.add(nomeProduto + " -> nova quantidade: " + novaQuantidade);
     }
 

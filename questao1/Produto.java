@@ -9,6 +9,7 @@ public class Produto {
     private final Set<AreaInteressada> areas = new LinkedHashSet<>();
 
     public Produto(String nome, int quantidade) {
+        validarQuantidade(quantidade);
         this.nome = nome;
         this.quantidade = quantidade;
     }
@@ -22,12 +23,20 @@ public class Produto {
     }
 
     public void alterarQuantidade(int novaQuantidade) {
+        validarQuantidade(novaQuantidade);
         if (novaQuantidade == quantidade) {
             return;
         }
+        int quantidadeAnterior = quantidade;
         quantidade = novaQuantidade;
         for (AreaInteressada area : areas) {
-            area.atualizar(nome, quantidade);
+            area.atualizar(nome, quantidadeAnterior, quantidade);
+        }
+    }
+
+    private static void validarQuantidade(int quantidade) {
+        if (quantidade < 0) {
+            throw new IllegalArgumentException("Quantidade nao pode ser negativa: " + quantidade);
         }
     }
 }
